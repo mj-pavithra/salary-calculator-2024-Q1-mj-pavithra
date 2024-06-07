@@ -18,7 +18,7 @@ const SalaryOutput = () => {
 
     const totalDeductions = deductions.reduce((acc, item) => acc + item.amount, 0);
     const grossEarning = basicSalary + totalEarnings - totalDeductions ;
-    const APIT = grossEarning * 0.06;
+    const APIT = grossEarning * 0.18 + 3000;
     const netSalary = grossEarning - APIT- epfCut;
 
 

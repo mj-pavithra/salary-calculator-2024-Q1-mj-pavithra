@@ -1,7 +1,7 @@
 import React from 'react';
-import BasicSalary from '../components/GetBasicSalary';
-import Earnings from '../components/GetEarnings';
-import Deductions from '../components/GetDeductions';
+import BasicSalary from '../components/BasicSalary';
+import Earnings from '../components/Earnings';
+import Deductions from '../components/Deductions';
 import { FaSyncAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { setBasicSalary } from '../store/slices/basicSalarySlice';
