@@ -3,7 +3,7 @@ type YourSalaryProps = {
     totalEarnings: number;
     totalDeductions: number;
     EPFcut: number;
-    APIT = {APIT}
+    APIT: number;
     
     };
 
