@@ -18,6 +18,9 @@ const earningsSlice = createSlice({
     name: 'earnings',
     initialState,
     reducers: {
+        resetEarnings: (state) => {
+        state.items = [];
+        },
         addEarning: (state) => {
             state.items.push({ title: '', amount: 0, epfEtf: false });
         },
@@ -38,5 +41,5 @@ const earningsSlice = createSlice({
     },
 });
 
-export const { addEarning, removeEarning, updateEarning } = earningsSlice.actions;
+export const { addEarning, removeEarning, updateEarning, resetEarnings, } = earningsSlice.actions;
 export default earningsSlice.reducer;

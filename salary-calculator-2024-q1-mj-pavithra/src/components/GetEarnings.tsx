@@ -1,20 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { addEarning, removeEarning, updateEarning } from '../store/slices/earningsSlice';
 
 interface Earning {
     title: string;
-    amount: number;
+    amount: number | null;
     epfEtf: boolean;
 }
 
 const Earnings = () => {
     const dispatch = useDispatch();
     const earnings = useSelector((state: RootState) => state.earnings.items);
+    const [errors, setErrors] = useState<string[]>([]);
 
     const handleChange = (index: number, field: keyof Earning, value: string | boolean) => {
-        dispatch(updateEarning({ index, field, value }));
+        const parsedValue = parseFloat(value as string);
+        const newErrors = [...errors];
+        
+        if (field === 'title') {
+            if (!value) {
+                newErrors[index] = 'Earning title is required';
+            } else {
+                newErrors[index] = '';
+                dispatch(updateEarning({ index, field, value }));
+            }
+        } else if (field === 'amount') {
+            if (!earnings[index].title) {
+                newErrors[index] = 'Please fill the title before the amount';
+            } else if (!value) {
+                newErrors[index] = 'Earning amount is required';
+            } else if (isNaN(parsedValue)) {
+                newErrors[index] = 'Earning amount must be a number';
+            } else if (parsedValue < 0) {
+                newErrors[index] = 'Earning amount must be a non-negative number';
+            } else {
+                newErrors[index] = '';
+                dispatch(updateEarning({ index, field, value: parsedValue.toString() }));
+            }
+        } else {
+            dispatch(updateEarning({ index, field, value }));
+        }
+
+        setErrors(newErrors);
     };
 
     return (
@@ -34,13 +62,20 @@ const Earnings = () => {
                         type="text"
                         className="col-span-1 p-2 border border-gray-300 rounded"
                         placeholder="Amount"
-                        value={earning.amount}
+                        value={earning.amount|| ''}
                         onChange={(e) => handleChange(index, 'amount', e.target.value)}
                     />
                     <div className="col-span-1 p-2 grid-cols-2 text-left flex items-center">
                         <button
                             className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-black hover:border-red-500 focus:bg-red-500 focus:text-white"
-                            onClick={() => dispatch(removeEarning(index))}
+                            onClick={() => {
+                                dispatch(removeEarning(index));
+                                setErrors(prevErrors => {
+                                    const newErrors = [...prevErrors];
+                                    newErrors.splice(index, 1);
+                                    return newErrors;
+                                });
+                            }}
                         >
                             <p className="text-xl">x</p>
                         </button>
@@ -56,11 +91,15 @@ const Earnings = () => {
                             EPF/ETF
                         </label>
                     </div>
+                    {errors[index] && <p className="text-red-500">{errors[index]}</p>}
                 </div>
             ))}
             <button
                 className="text-blue-500 hover:border p-1.5 hover:rounded hover:border-blue-500"
-                onClick={() => dispatch(addEarning())}
+                onClick={() => {
+                    dispatch(addEarning());
+                    setErrors([...errors, '']);
+                }}
             >
                 <span className="text-3xl">+</span> Add New Allowance
             </button>

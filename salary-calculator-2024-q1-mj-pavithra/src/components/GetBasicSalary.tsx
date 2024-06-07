@@ -15,7 +15,13 @@ const BasicSalary = () => {
             setError('Basic salary is required');
         } else if (isNaN(Number(value))) {
             setError('Basic salary must be a number');
-        } else {
+        } else if (Number(value) < 0) {
+            setError('Basic salary must be a positive number');
+        }
+        else if (Number(value) > 1000000) {
+            setError(value+'is unrealistic');
+        }
+        else {
             setError('');
             dispatch(setBasicSalary(Number(value)));
         }

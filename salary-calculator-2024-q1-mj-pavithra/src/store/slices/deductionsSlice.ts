@@ -17,6 +17,9 @@ const deductionsSlice = createSlice({
     name: 'deductions',
     initialState,
     reducers: {
+        resetDeductions: (state) => {
+        state.items = [];
+        },
         addDeduction: (state) => {
             state.items.push({ title: '', amount: 0 });
         },
@@ -35,5 +38,5 @@ const deductionsSlice = createSlice({
     },
 });
 
-export const { addDeduction, removeDeduction, updateDeduction } = deductionsSlice.actions;
+export const { addDeduction, removeDeduction, updateDeduction, resetDeductions} = deductionsSlice.actions;
 export default deductionsSlice.reducer;
