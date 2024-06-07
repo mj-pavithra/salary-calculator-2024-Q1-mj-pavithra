@@ -23,7 +23,7 @@ const SalaryOutput = () => {
 
 
     return (
-        <div className=" flex-4 flex-shrink-0 p-10 bg-white  rounded-lg text-left">
+        <div className=" flex-4 flex-shrink-0 p-5 md:p-10 bg-white  rounded-lg text-left">
             <h1 className="text-2xl font-bold mb-4">Your Salary</h1>
             <YourSalary basicSalary ={basicSalary}
                         totalEarnings ={totalEarnings}

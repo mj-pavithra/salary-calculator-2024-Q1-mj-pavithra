@@ -22,10 +22,10 @@ const Earnings = () => {
             <h2 className="text-xl font-semibold mb-2">Earnings</h2>
             <h3 className="mb-2 text-gray-600">Allowance, Fixed Allowance, Bonus and etc.</h3>
             {earnings.map((earning, index) => (
-                <div key={index} className="grid grid-cols-4 gap-1 mb-4">
+                <div key={index} className="grid  md:grid-cols-4 gap-1 mb-4">
                     <input
                         type="text"
-                        className="col-span-2 p-2 border border-gray-300 rounded"
+                        className="md:col-span-2 p-2 border border-gray-300 rounded"
                         placeholder="Pay Details (Title)"
                         value={earning.title}
                         onChange={(e) => handleChange(index, 'title', e.target.value)}

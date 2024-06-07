@@ -26,7 +26,7 @@ const BasicSalary = () => {
             <h2 className="text-xl font-semibold mb-2">Basic Salary</h2>
             <input
                 type="text"
-                className="max-w-[800px] min-w-[450px] p-2 border border-gray-300 rounded"
+                className="min-w-[350px] md:min-w-[450px] p-2 border border-gray-300 rounded"
                 placeholder="Enter Basic Salary"
                 value={basicSalary || ''}
                 onChange={handleChange}

@@ -21,10 +21,10 @@ const Deductions = () => {
             <h2 className="text-xl font-semibold mb-2">Deductions</h2>
             <h3 className="mb-2 text-gray-600">Salary Advances, Loan Deductions and all</h3>
             {deductions.map((deduction, index) => (
-                <div key={index} className="grid grid-cols-4 gap-1 mb-4">
+                <div key={index} className="grid md:grid-cols-4 gap-1 mb-4">
                     <input
                         type="text"
-                        className="col-span-2 p-2 border border-gray-300 rounded"
+                        className="md:col-span-2 p-2 border border-gray-300 rounded"
                         placeholder="Deduction Details (Title)"
                         value={deduction.title}
                         onChange={(e) => handleChange(index, 'title', e.target.value)}
