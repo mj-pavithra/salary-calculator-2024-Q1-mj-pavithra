@@ -12,7 +12,7 @@ function formatNumberWithCommas(number: number): string {
     return (
         <div className="flex justify-between items-center  p-4 rounded-lg mb-4 border border-gray-200 shadow-sm">
             <h2 className="text-lg font-bold">Net Salary (Takehome)</h2>
-            <h2 className="text-lg font-bold">Rs. {formattedNetSalary}.00</h2>
+            <h2 className="text-lg font-bold">Rs. {formattedNetSalary}</h2>
         </div>
     );
 }

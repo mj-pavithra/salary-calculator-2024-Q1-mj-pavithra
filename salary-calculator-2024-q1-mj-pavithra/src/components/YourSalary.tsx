@@ -27,24 +27,24 @@ const YourSalary: React.FC<YourSalaryProps> = ({basicSalary, totalEarnings, tota
           </div>
           <div className="flex justify-between  rounded-lg mb-2.5">
               <h3>Basic Salary</h3>
-              <h3>{formattedBasicSalary}.00</h3>
+              <h3>{formattedBasicSalary}</h3>
           </div>
             <div className="flex justify-between  rounded-lg mb-2.5">
                 <h3>Total Earnings</h3>
-                <h3>+ {formattedTotalEarnings}.00</h3>
+                <h3>+ {formattedTotalEarnings}</h3>
             </div>
 
             <div className="flex justify-between  rounded-lg mb-2.5">
                 <h3>Total Deductions</h3>
-                <h3>- {formattedTotalDeductions}.00</h3>
+                <h3>- {formattedTotalDeductions}</h3>
             </div>
             <div className="flex justify-between  rounded-lg mb-2.5">
                 <h3>EPF</h3>
-                <h3>- {formattedEPFcut}.00</h3>
+                <h3>- {formattedEPFcut}</h3>
             </div>
             <div className="flex justify-between  rounded-lg ">
                 <h3>APIT</h3>
-                <h3>- {formattedAPIT}.00</h3>
+                <h3>- {formattedAPIT}</h3>
             </div>
             
       </div>

@@ -18,7 +18,12 @@ const SalaryOutput = () => {
 
     const totalDeductions = deductions.reduce((acc, item) => acc + item.amount, 0);
     const grossEarning = basicSalary + totalEarnings - totalDeductions ;
-    const APIT = grossEarning * 0.18 + 3000;
+    let APIT = grossEarning * 0.18 ;
+    const APITfixedRate = 25000;
+
+    if(grossEarning > APITfixedRate){
+     APIT = grossEarning * 0.18 + APITfixedRate;
+    }
     const netSalary = grossEarning - APIT- epfCut;
 
 
