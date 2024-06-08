@@ -19,16 +19,16 @@ const CTC : React.FC<CTCProps> = ({EPFcut}) => {
             <h3 className=" font-s text-gray-500 mb-2">Contribution from the Employer</h3>
             <div className="flex justify-between rounded-lg  mb-2.5">
                 <h3>Employeer EPF (12%)</h3>
-                <h3>Rs. {formattedEmployerEPF}.00</h3>
+                <h3>Rs. {formattedEmployerEPF}</h3>
             </div>
             <div className="flex justify-between  rounded-lg ">
                 <h3>Employeer ETF (3%)</h3>
-                <h3>Rs. {formattedEmployerETF}.00</h3>
+                <h3>Rs. {formattedEmployerETF}</h3>
             </div>
             <br />
             <div className="flex justify-between  rounded-lg ">
                 <h3>Cost to Company</h3>
-                <h3>Rs. {formattedCTCamount}.00</h3>
+                <h3>Rs. {formattedCTCamount}</h3>
             </div>
         </div>
     );
