@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface BasicSalaryState {
-    value: number;
+    value: number ;
 }
 
 const initialState: BasicSalaryState = {

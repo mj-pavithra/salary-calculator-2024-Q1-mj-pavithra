@@ -1,7 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
-import { setBasicSalary } from '../store/slices/basicSalarySlice';
+import { setBasicSalary,  } from '../store/slices/basicSalarySlice';
+
+
 
 const BasicSalary = () => {
     const dispatch = useDispatch();
@@ -11,8 +13,10 @@ const BasicSalary = () => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
 
+      
         if (!value) {
             setError('Basic salary is required');
+            dispatch(setBasicSalary(0));
         } else if (isNaN(Number(value))) {
             setError('Basic salary must be a number');
         } else if (Number(value) < 0) {

@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.link-to-shasthra {
+  position: absolute;
+  display: flex;
+  bottom : 0;
+  color: #61dafb;
+}

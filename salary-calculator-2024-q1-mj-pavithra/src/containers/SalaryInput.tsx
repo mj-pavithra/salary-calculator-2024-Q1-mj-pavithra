@@ -11,10 +11,13 @@ import { resetDeductions } from '../store/slices/deductionsSlice'; // Assuming y
 const SalaryInput = () => {
     const dispatch = useDispatch();
 
+
     const handleReset = () => {
-        dispatch(setBasicSalary(0));
-        dispatch(resetEarnings());
-        dispatch(resetDeductions());
+        // window.location.reload(); // This is easy
+        dispatch(setBasicSalary(0));  //But,
+        dispatch(resetEarnings());    //This is for,
+        dispatch(resetDeductions());  //Just for learning
+
     };
 
     return (

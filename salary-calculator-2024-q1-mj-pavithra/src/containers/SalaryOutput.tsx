@@ -7,6 +7,7 @@ import { RootState } from '../store';
 
 
 
+
 const SalaryOutput = () => {
 
     const basicSalary = useSelector((state: RootState) => state.basicSalary.value);
@@ -18,13 +19,21 @@ const SalaryOutput = () => {
 
     const totalDeductions = deductions.reduce((acc, item) => acc + item.amount, 0);
     const grossEarning = basicSalary + totalEarnings - totalDeductions ;
-    let APIT = grossEarning * 0.18 ;
+    let APIT: any = grossEarning * 0.18 ;
     const APITfixedRate = 25000;
+    let netSalary = grossEarning - APIT- epfCut;
 
-    if(grossEarning > APITfixedRate){
-     APIT = grossEarning * 0.18 + APITfixedRate;
+    if(grossEarning === 0){
+        APIT = 0;
     }
-    const netSalary = grossEarning - APIT- epfCut;
+     else if(grossEarning > 100000){
+     APIT = (grossEarning-100000) * 0.18 + APITfixedRate;
+    }else
+    {
+        APIT = "salary i less than 100000 so no APIT";
+        netSalary = grossEarning - epfCut;
+    }
+
 
 
     return (
@@ -38,6 +47,8 @@ const SalaryOutput = () => {
                         />
             <NetSalary  netSalary = {netSalary}/>
             <CTC EPFcut = {epfCut} />
+
+            
         </div>
     );
 }
